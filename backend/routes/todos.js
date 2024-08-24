@@ -15,11 +15,11 @@ todoRouter.post("/", async (req, res) => {
     }
 
     // Save the new todo to the database
-    await Todo.create({
+    const todo = await Todo.create({
       title,
     });
     // Return status 201 and send the saved todo to the client
-    return res.status(201).json({title});
+    return res.status(201).json({todo});
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ message: error.message });
